@@ -47,3 +47,13 @@ export const getRowStyle = (bet: BetType): CSSProperties => {
         : "#68cf25",
   };
 };
+
+export const getCashInProgress = (bets: BetType[]) => {
+  return bets.reduce((acc, bet) => {
+    if (bet.result === "unknown") {
+      acc += +bet.betAmount;
+    }
+
+    return acc;
+  }, 0);
+};

@@ -10,7 +10,11 @@ import { dateKey, formatDate } from "../helpers/date";
 import type { Dayjs } from "dayjs";
 import { type Dispatch, type SetStateAction } from "react";
 import type { DaysType, DayType } from "../types";
-import { formatCurrency, getBetIncome } from "../helpers/table";
+import {
+  formatCurrency,
+  getBetIncome,
+  getCashInProgress,
+} from "../helpers/table";
 
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
@@ -47,7 +51,7 @@ export const Header = ({ date, setDate, currentDay, setDays }: Props) => {
     return acc;
   }, 0);
 
-  const currentCash = balance + totalIncome;
+  const currentCash = balance + totalIncome - getCashInProgress(bets);
 
   const averageCoef =
     bets.reduce((acc, bet) => {
@@ -119,7 +123,7 @@ export const Header = ({ date, setDate, currentDay, setDays }: Props) => {
         </Stack>
         <Typography>
           <Typography component="span" color="#676767" fontSize={16}>
-            Итого:{" "}
+            Баланс:{" "}
           </Typography>
           <Typography component="span" fontWeight={500}>
             {formatCurrency(currentCash)} ₽

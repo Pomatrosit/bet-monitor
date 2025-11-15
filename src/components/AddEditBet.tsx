@@ -148,12 +148,7 @@ export const AddEditBet = ({
                 justifyContent="center"
                 gap={2}
               >
-                <Button
-                  type="submit"
-                  variant="outlined"
-                  size="small"
-                  onClick={handleClose}
-                >
+                <Button variant="outlined" size="small" onClick={handleClose}>
                   Отмена
                 </Button>
                 <Button type="submit" variant="contained" size="small">
